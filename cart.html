@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .cart-container { display: flex; gap: 20px; align-items: flex-start; }
+    .cart-items { flex: 2; }
+    .cart-summary { 
+        flex: 1; justify-items: flex-start; border: 1px solid #ccc; 
+        padding: 15px; border-radius: 8px;}
+    .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 15px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .cart-item-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    }
+    .cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    }
+
+    .cart-item-info {
+    display: flex;
+    flex-direction: column;
+    }
+
+    .cart-item-info span {
+    font-weight: bold;
+    margin-bottom: 5px;
+    }
+
+    .cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .cart-actions input[type="number"] {
+    width: 3rem;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    }
+
+    .cart-actions button {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    }
+
+    .cart-actions button:hover {
+    background: #b02a37;
+    }
+
+    .empty { text-align: center; margin-top: 30px; font-size: 18px; 
+        color: #666; }
+    .checkout-btn { background: #28a745; color: white; border: none; 
+        padding: 10px 15px; width: 100%; border-radius: 5px; 
+        cursor: pointer; }
+    .checkout-btn:hover { background: #218838; }
+    @media (max-width: 768px){
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .cart-container{
+            flex-direction: column;
+            gap: 15px;
+            padding: 0 10px;
+        }
+        .cart-items, .cart-summary{
+            width: 100%;
+            margin: 0;
+        }
+        .cart-item .cart-actions input[type="number"]{
+            width: 2rem;
+        }
+        .checkout-btn {
+            position: fixed;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            border-radius: 15px;
+            padding: 15px;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    }
+    </style>
+</head>
+<body>
+    <h1>🛒 Your Cart</h1>
+    <div class="cart-container">
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-summary">
+            <h2>Order Summary</h2>
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+            <p>Tax (10%): $<span id="tax">0.00</span></p>
+            <h3>Total: $<span id="total">0.00</span></h3>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+    <script>
+    // Sample products (usually added from product page)
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        const cartItemsContainer = document.getElementById("cartItems");
+        const subtotalEl = document.getElementById("subtotal");
+        const taxEl = document.getElementById("tax");
+        const totalEl = document.getElementById("total");
+
+        function renderCart() {
+        cartItemsContainer.innerHTML = "";
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty">Your cart is empty 🛍️</p>';
+            updateSummary();
+            return;
+        }
+
+        cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.setAttribute("data-index", index);
+        div.innerHTML = `
+            <div class="cart-item-details">
+            <img src="${item.img}" alt="${item.name}">
+            <div class="cart-item-info">
+                <span>${item.name}</span>
+                <small>$${item.price}</small>
+            </div>
+            </div>
+            <div class="cart-actions">
+            <input type="number" min="1" value="${item.qty}" 
+                onchange="updateQty(${index}, this.value)">
+            <button onclick="removeItem(${index})">Remove</button>
+            </div>
+        `;
+        cartItemsContainer.appendChild(div);
+        });
+
+        updateSummary();
+        }
+
+        function updateQty(index, newQty) {
+        cart[index].qty = parseInt(newQty) || 1;
+        saveCart();
+        updateSummary();
+        }
+
+        function removeItem(index) {
+            console.log(index)
+        cart.splice(index, 1);
+        saveCart();
+        const itemElement = document.querySelector(`.cart-item[data-index="${index}"]`)
+        if(itemElement) itemElement.remove();
+        if(cart.length === 0){
+            cartItemsContainer.innerHTML = '<p class="empty">Your cart is empty 🛍️</p>';
+            updateSummary();
+        }else {
+            document.querySelectorAll(".cart-item").forEach((el, newIndex) => {
+                el.setAttribute("data-index", newIndex);
+                el.querySelector("input").setAttribute("onchange", `updateQty(${newIndex}, this.value)`);
+                el.querySelector("button").setAttribute("onclick", `removeItem(${newIndex})`);
+            });
+        }
+        updateSummary();
+        }
+
+        function updateSummary() {
+        let subtotal = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+        let tax = subtotal * 0.1;
+        let total = subtotal + tax;
+
+        subtotalEl.textContent = subtotal.toFixed(2);
+        taxEl.textContent = tax.toFixed(2);
+        totalEl.textContent = total.toFixed(2);
+        }
+
+        function saveCart() {
+        localStorage.setItem("cart", JSON.stringify(cart));
+        }
+
+        function checkout() {
+        alert("Proceeding to checkout (demo only)!");
+        }
+
+        renderCart();
+    </script>
+    
+</body>
+</html>
