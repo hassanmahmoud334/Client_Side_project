@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="./css/checkout.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script type="module" src="./js/pages/checkout.js"></script>
+</head>
+<body>
+    <header>
+        <div class="offers">
+            <div class="centerOffers">
+                <span>Get early access on launches and offers.</span>
+                <a href="#">Sign Up For Texts</a>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+            <div class="rightOffers">
+                <i class="fa-solid fa-flag-usa"></i>
+                <a href="#" class="toggleCurrency">USD</a>
+            </div>
+        </div>
+        <nav>
+            <div class="hamburger">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li>Women</li>
+                <li>Man</li>
+                <li>About</li>
+                <li>EverWorld Stories</li>
+            </ul>
+            <a href="index.html"><span>EVERLANE</span></a>
+            <div>
+                <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="favorites"><i class="fa-regular fa-heart"></i></div>
+                <div class="cart"> <a href="cart.html" class="cart-link">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <div class="sections">
+            <ul>
+                <li>Holiday Gifting</li>
+                <li>New Arrivals</li>
+                <li>Best-Sellers</li>
+                <li>clothing</li>
+                <li>Top & Sweaters</li>
+                <li>Pants & Jeans</li>
+                <li>Oterwear</li>
+                <li>Shoes & Bags</li>
+                <li class="sale">Sale</li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section id="cart-summary">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <p id="cart-total"></p>
+        </section>
+        <section id="checkout-form-section">
+        <h2>Shipping Information</h2>
+        <form id="checkout-form">
+            <label>
+            Name:
+            <input type="text" id="name" required>
+            </label>
+            <br>
+            <label>
+            Email:
+            <input type="email" id="email" required>
+            </label>
+            <br>
+            <label>
+            Address:
+            <textarea id="address" required></textarea>
+            </label>
+            <br>
+            <button type="submit">Place Order</button>
+        </form>
+        <p id="order-message" class="success"></p>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-columns">
+            <div class="footer-col">
+                <h4>Account</h4>
+                <p><a href="#">Log In</a></p>
+                <p><a href="#">Sign Up</a></p>
+                <p><a href="#">Redeem a Gift Card</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <p><a href="#">About</a></p>
+                <p><a href="#">Environmental Initiatives</a></p>
+                <p><a href="#">Factories</a></p>
+                <p><a href="#">DEI</a></p>
+                <p><a href="#">Careers</a></p>
+                <p><a href="#">International</a></p>
+                <p><a href="#">Accessibility</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <p><a href="#">Help Center</a></p>
+                <p><a href="#">Return Policy</a></p>
+                <p><a href="#">Shipping Info</a></p>
+                <p><a href="#">Bulk Orders</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">Instagram</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Affiliates</a></p>
+                <p><a href="#">Our Stores</a></p>
+            </div>
+
+            <div class="footer-col email">
+                <div class="email-box">
+                <input type="email" placeholder="Email Address" />
+                <button class="arrow">→</button>
+                </div>
+            </div>
+            </div>
+
+            <div class="footer-bottom">
+            <p>© 2025 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

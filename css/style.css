@@ -10,6 +10,11 @@ body {
 }
 
 header {
+  position: sticky;
+  top: 0;
+   width: 100%;
+  z-index: 1000;
+  background: #fff;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -81,7 +86,10 @@ header nav span {
   font-size: 20px;
   letter-spacing: 2px;
 }
-
+header nav a {
+  text-decoration: none;
+  color: #000000;
+}
 header nav div {
   display: flex;
   flex-wrap: nowrap;
@@ -89,6 +97,25 @@ header nav div {
   cursor: pointer;
   font-size: 18px;
 }
+header nav span {
+  position: static;
+  transform: none;
+}
+
+header .favorites {
+  cursor: pointer;
+  position: relative;
+}
+
+header .favorites i {
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+header .favorites:hover i {
+  color: red;
+}
+
 header .sections{
   display: flex;
   justify-content: center;

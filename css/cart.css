@@ -1,0 +1,117 @@
+body{
+    background: #fff;
+}
+.cart-container { 
+    display: flex;
+    height: 100vh;
+    gap: 20px; 
+    align-items: flex-start;
+}
+.cart-items { 
+    flex: 2;
+    padding: 10px;
+}
+.cart-summary { 
+    flex: 1; justify-items: 
+    flex-start; 
+    border: 1px solid #ccc; 
+    padding: 15px; 
+    border-radius: 8px;}
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.cart-item-details {
+display: flex;
+align-items: center;
+gap: 15px;
+flex: 1;
+}
+.cart-item img {
+width: 80px;
+height: 80px;
+object-fit: cover;
+border-radius: 8px;
+border: 1px solid #eee;
+}
+
+.cart-item-info {
+display: flex;
+flex-direction: column;
+}
+
+.cart-item-info span {
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.cart-actions {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.cart-actions input[type="number"] {
+width: 3rem;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 6px;
+text-align: center;
+}
+
+.cart-actions button {
+background: #dc3545;
+color: #fff;
+border: none;
+padding: 6px 12px;
+border-radius: 6px;
+cursor: pointer;
+}
+
+.cart-actions button:hover {
+background: #b02a37;
+}
+
+.empty { text-align: center; margin-top: 30px; font-size: 18px; 
+    color: #666; }
+.checkout-btn { background: #28a745; color: white; border: none; 
+    padding: 10px 15px; width: 100%; border-radius: 5px; 
+    cursor: pointer; }
+.checkout-btn:hover { background: #218838; }
+@media (max-width: 768px){
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    .cart-container{
+        flex-direction: column;
+        gap: 15px;
+        padding: 0 10px;
+    }
+    .cart-items, .cart-summary{
+        width: 100%;
+        margin: 0;
+    }
+    .cart-item .cart-actions input[type="number"]{
+        width: 2rem;
+    }
+    .checkout-btn {
+        position: fixed;
+        bottom: 5px;
+        left: 0;
+        right: 0;
+        border-radius: 15px;
+        padding: 15px;
+        font-size: 18px;
+        z-index: 1000;
+    }
+}

@@ -1,9 +1,8 @@
-export function getItem(key, defaultValue = []) {
-  return JSON.parse(localStorage.getItem(key)) || defaultValue;
-}
-export function setItem(key, value) {
+export function saveData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
-export function removeItem(key) {
-  localStorage.removeItem(key);
+
+export function loadData(key, defaultValue = []) {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : defaultValue;
 }
