@@ -40,12 +40,12 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
   const message = document.getElementById("order-message");
 
   if (!name || !email || !address) {
-    message.textContent = "⚠ Please fill in all fields.";
+    message.textContent = "Please fill in all fields.";
     message.style.color = "red";
     return;
   }
 
-  message.textContent = `✅ Thank you ${name}! Your order has been placed successfully.`;
+  message.textContent = `Thank you ${name}! Your order has been placed successfully.`;
   message.style.color = "green";
 
   cart = [];

@@ -35,7 +35,9 @@
                 </ul>
                 <a href="index.html"><span>EVERLANE</span></a>
                 <div>
-                    <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="search">
+                        <input type="text" id="searchInput" placeholder="Search products..." />
+                    </div>
                     <div class="favorites"><i class="fa-regular fa-heart"></i></div>
                     <div class="cart"> <a href="cart.html" class="cart-link">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -67,17 +69,16 @@
                     <button class="shopNow">Shop Now</button>
                 </div>
             </div>
-
+            <h1>Shop by Category</h1>
+            <select id="categorySelect"></select>
             <h1>Products</h1>
+            <div id="productContainer" class="products"></div>
             <div class="products" id="products"></div>
             <div id="favSidebar" class="fav-sidebar">
                 <button class="close-btn" onclick="toggleFavSidebar()">✖</button>
                 <h3>❤️ Favorites</h3>
                 <div id="favItems"></div>
             </div>
-            <div id="overlay" class="overlay"></div>
-
-
             <div id="overlay" class="overlay" onclick="toggleFavSidebar()"></div>
 
         </main>
