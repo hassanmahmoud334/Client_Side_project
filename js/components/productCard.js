@@ -8,7 +8,7 @@ export function renderProductCard(product) {
     id: product.id,
     name: product.title,
     price: product.price,
-    img: product.image,
+    img: product.image
   };
   div.innerHTML = `
     <i class="fav-icon fa-heart ${isFavorite(product.id) ? "fa-solid active" : "fa-regular"}" 
