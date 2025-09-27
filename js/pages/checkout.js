@@ -1,6 +1,11 @@
 import { loadData, saveData } from "../utils/storage.js";
+import { initNavbar } from '../components/navbar.js';
 
 let cart = loadData("cart") || [];
+
+document.addEventListener("DOMContentLoaded", ()=>{
+initNavbar()
+});
 
 function renderCartSummary() {
   const cartItemsContainer = document.getElementById("cart-items");

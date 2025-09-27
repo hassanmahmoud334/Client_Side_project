@@ -1,11 +1,9 @@
 import { saveData, loadData } from "../utils/storage.js";
 import { initNavbar } from '../components/navbar.js';
-let cart = loadData("cart");
 
+let cart = loadData("cart") || [];
 let cartItemsContainer, subtotalEl, taxEl, totalEl;
-document.addEventListener("DOMContentLoaded", ()=>{
-initNavbar()
-});
+
 function initCartElements() {
   cartItemsContainer = document.getElementById("cartItems");
   subtotalEl = document.getElementById("subtotal");
@@ -100,6 +98,7 @@ export function updateCartCount() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  initNavbar();
   initCartElements();
   updateCartCount();
   renderCart();

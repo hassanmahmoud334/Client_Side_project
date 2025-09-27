@@ -27,6 +27,7 @@ export function renderFavorites() {
       <img src="${f.img}" alt="${f.name}">
       <p>${f.name}</p>
       <span>$${f.price}</span>
+      <button class="remove-fav" data-id="${f.id}">✖</button>
     `;
     favItems.appendChild(item);
   });
@@ -37,6 +38,20 @@ export function toggleFavSidebar() {
   document.getElementById("overlay").classList.toggle("show");
 }
 
+const favItems = document.getElementById("favItems");
+favItems.addEventListener("click", e => {
+  if (e.target.classList.contains("remove-fav")) {
+    const id = e.target.dataset.id;
+    favorites = favorites.filter(f => f.id != id);
+    saveData("favorites", favorites);
+    renderFavorites();
+    const favIcon = document.querySelector(`.fav-icon[data-id="${id}"]`);
+    if (favIcon) {
+      favIcon.classList.remove("fa-solid", "active");
+      favIcon.classList.add("fa-regular");
+    }
+  }
+});
 document.addEventListener("DOMContentLoaded", () => {
 
   const favIconHeader = document.querySelector("header .favorites");

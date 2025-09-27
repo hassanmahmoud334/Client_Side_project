@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function init() {
-  const products = await fetchProducts(20);
+  const products = await fetchProducts();
   setAllProducts(products);
   renderCategories(products);
   renderProducts(products);
