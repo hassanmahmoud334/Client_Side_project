@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 12px;
@@ -131,7 +133,25 @@ header .favorites i {
 header .favorites:hover i {
   color: red;
 }
-
+.cart {
+  display: inline;
+  position: relative;
+}
+#cart-count {
+ position: absolute;
+  top: -6px;
+  right: -6px;
+  background: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 2px;
+  min-width: 12px;
+  min-height: 12px;
+  text-align: center;
+  line-height: 12px;
+}
 header .sections{
   display: flex;
   justify-content: center;
@@ -190,6 +210,13 @@ main .hero div .shopNow{
 }
 main .mainBody{
   padding: 10px;
+  text-align: center;
+}
+.div-cat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
 .hamburger {
   display: none;

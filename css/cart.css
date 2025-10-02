@@ -12,11 +12,13 @@ body{
     padding: 10px;
 }
 .cart-summary { 
-    flex: 1; justify-items: 
-    flex-start; 
+    flex: 1; 
+    justify-items: flex-start; 
     border: 1px solid #ccc; 
     padding: 15px; 
-    border-radius: 8px;}
+    border-radius: 8px;
+    font-size: medium;
+}
 .cart-item {
     display: flex;
     align-items: center;
@@ -39,7 +41,7 @@ flex: 1;
 .cart-item img {
 width: 80px;
 height: 80px;
-object-fit: cover;
+object-fit: scale-down;
 border-radius: 8px;
 border: 1px solid #eee;
 }
