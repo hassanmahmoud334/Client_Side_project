@@ -51,7 +51,10 @@ flex-direction: column;
 font-weight: bold;
 margin-bottom: 5px;
 }
-
+#cart-total {
+  font-weight: bold;
+  text-align: right;
+}
 form label {
   display: block;
   margin: 10px 0;

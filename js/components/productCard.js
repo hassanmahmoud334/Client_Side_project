@@ -23,13 +23,13 @@ export function renderProductCard(product) {
     addToCart(productData);
     updateCartCount();
   });
-
-  div.querySelector(".fav-icon").addEventListener("click", e => {
-    toggleFavorite(productData);
-    e.target.classList.toggle("fa-regular");
-    e.target.classList.toggle("fa-solid");
-    e.target.classList.toggle("active");
-  });
+ const favIcon = div.querySelector(".fav-icon");
+ favIcon.addEventListener("click", (e) =>{
+  toggleFavorite(productData);
+  e.target.classList.toggle('fa-regular');
+  e.target.classList.toggle('fa-solid');
+  e.target.classList.toggle('active');
+ });
 
   return div;
 }

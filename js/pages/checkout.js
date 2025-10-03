@@ -43,13 +43,17 @@ document.getElementById("checkout-form").addEventListener("submit", (e) => {
   const email = document.getElementById("email").value.trim();
   const address = document.getElementById("address").value.trim();
   const message = document.getElementById("order-message");
-
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!name || !email || !address) {
     message.textContent = "Please fill in all fields.";
     message.style.color = "red";
     return;
   }
-
+  if (!emailRegex.test(email)) {
+    message.textContent = "Please enter a valid email address.";
+    message.style.color = "red";
+    return;
+  }
   message.textContent = `Thank you ${name}! Your order has been placed successfully.`;
   message.style.color = "green";
 
